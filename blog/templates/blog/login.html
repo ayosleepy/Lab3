@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Вход</h2>
+
+    {% if form.errors %}
+    <div class="alert alert-error">
+        Неверное имя пользователя или пароль.
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div>
+            <label>Имя пользователя:</label>
+            <input type="text" name="username" required style="width: 100%;">
+        </div>
+
+        <div>
+            <label>Пароль:</label>
+            <input type="password" name="password" required style="width: 100%;">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" class="btn">Войти</button>
+            <a href="{% url 'register' %}" class="btn btn-secondary">Регистрация</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

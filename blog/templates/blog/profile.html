@@ -1,0 +1,91 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Профиль пользователя {{ user.username }}</h2>
+
+    {% if user.profile.avatar %}
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="{{ user.profile.avatar.url }}" class="avatar" alt="Аватар">
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 20px;">
+            <h3>Основные данные</h3>
+            <div>
+                <label>Имя пользователя:</label>
+                {{ user_form.username }}
+            </div>
+            <div>
+                <label>Email:</label>
+                {{ user_form.email }}
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3>Дополнительная информация</h3>
+            <div>
+                <label>Аватар:</label>
+                {{ profile_form.avatar }}
+            </div>
+            <div>
+                <label>О себе:</label>
+                {{ profile_form.bio }}
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Ваши посты</h3>
+
+    {% if posts %}
+        {% for post in posts %}
+        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+            <div style="display: flex; justify-content: space-between;">
+                <small style="color: #666;">{{ post.created_at|date:"d.m.Y H:i" }}</small>
+                <div>
+                    <a href="{% url 'edit_post' post.id %}" style="color: #666; text-decoration: none; margin-right: 10px;">Изменить</a>
+                    <a href="{% url 'delete_post' post.id %}" style="color: #dc3545; text-decoration: none;">Удалить</a>
+                </div>
+            </div>
+            <p>{{ post.content|truncatechars:100 }}</p>
+            <div style="color: #666; font-size: 14px;">
+                <span>Лайки: {{ post.likes_count }}</span>
+                <span style="margin-left: 15px;">Комментарии: {{ post.comments_count }}</span>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>У вас пока нет постов.</p>
+    {% endif %}
+
+    {% if posts.has_other_pages %}
+    <div style="text-align: center; margin-top: 20px;">
+        {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}" class="btn btn-secondary">Назад</a>
+        {% endif %}
+
+        <span style="margin: 0 15px;">Страница {{ posts.number }} из {{ posts.paginator.num_pages }}</span>
+
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}" class="btn btn-secondary">Вперед</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="card" style="background: #f8d7da; border-color: #f5c6cb;">
+    <h3 style="color: #721c24;">Удаление профиля</h3>
+    <p style="color: #721c24;">Внимание: это действие нельзя отменить.</p>
+    <a href="{% url 'delete_profile' %}" class="btn btn-danger">Удалить профиль</a>
+</div>
+{% endblock %}

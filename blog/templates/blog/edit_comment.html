@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2>Редактирование комментария</h2>
+    <small style="color: #666;">Создан: {{ comment.created_at|date:"d.m.Y H:i" }}</small>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div>
+            <label>Текст комментария:</label>
+            {{ form.content }}
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
