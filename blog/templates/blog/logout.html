@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="card">
-    <h2>Выход из системы</h2>
-    <p>Вы успешно вышли из системы.</p>
+<div class="box">
+    <h2 style="margin-top: 0;">Выход</h2>
+    <p>Вы вышли из системы.</p>
     <div style="margin-top: 20px;">
         <a href="{% url 'login' %}" class="btn">Войти снова</a>
-        <a href="{% url 'index' %}" class="btn btn-secondary">На главную</a>
+        <a href="{% url 'index' %}" class="btn btn-gray">На главную</a>
     </div>
 </div>
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="card">
-    <h2>Редактирование комментария</h2>
-    <small style="color: #666;">Создан: {{ comment.created_at|date:"d.m.Y H:i" }}</small>
+<div class="box">
+    <h2 style="margin-top: 0;">Редактирование комментария</h2>
+    <small class="small-text">Создан: {{ comment.created_at|date:"d.m.Y H:i" }}</small>
 
     <form method="post">
         {% csrf_token %}
@@ -14,8 +14,8 @@
         </div>
 
         <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-success">Сохранить изменения</button>
-            <a href="{% url 'index' %}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-green">Сохранить изменения</button>
+            <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>
     </form>
 </div>

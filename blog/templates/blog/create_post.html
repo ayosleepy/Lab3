@@ -1,8 +1,8 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="card">
-    <h2>Создание поста</h2>
+<div class="box">
+    <h2 style="margin-top: 0;">Создание поста</h2>
 
     <form method="post">
         {% csrf_token %}
@@ -11,13 +11,13 @@
             <label>Содержание поста:</label>
             {{ form.content }}
             {% if form.content.errors %}
-            <div style="color: #dc3545; font-size: 14px;">{{ form.content.errors }}</div>
+            <div style="color: #e41e3f; font-size: 13px;">{{ form.content.errors }}</div>
             {% endif %}
         </div>
 
         <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-success">Опубликовать</button>
-            <a href="{% url 'index' %}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-green">Опубликовать</button>
+            <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>
     </form>
 </div>

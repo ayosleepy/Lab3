@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="card">
-    <h2>Регистрация</h2>
+<div class="box">
+    <h2 style="margin-top: 0;">Регистрация</h2>
 
     {% if form.errors %}
-    <div class="alert alert-error">
-        Исправьте ошибки в форме.
+    <div class="msg msg-error">
+        Проверьте данные
     </div>
     {% endif %}
 
@@ -16,38 +16,29 @@
         <div>
             <label>Имя пользователя:</label>
             {{ form.username }}
-            {% if form.username.errors %}
-            <div style="color: #dc3545; font-size: 14px;">{{ form.username.errors }}</div>
-            {% endif %}
         </div>
 
         <div>
             <label>Email:</label>
             {{ form.email }}
             {% if form.email.errors %}
-            <div style="color: #dc3545; font-size: 14px;">{{ form.email.errors }}</div>
+            <div style="color: #e41e3f; font-size: 13px;">{{ form.email.errors }}</div>
             {% endif %}
         </div>
 
         <div>
             <label>Пароль:</label>
             {{ form.password1 }}
-            {% if form.password1.errors %}
-            <div style="color: #dc3545; font-size: 14px;">{{ form.password1.errors }}</div>
-            {% endif %}
         </div>
 
         <div>
-            <label>Подтверждение пароля:</label>
+            <label>Пароль еще раз:</label>
             {{ form.password2 }}
-            {% if form.password2.errors %}
-            <div style="color: #dc3545; font-size: 14px;">{{ form.password2.errors }}</div>
-            {% endif %}
         </div>
 
         <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
-            <a href="{% url 'login' %}" class="btn btn-secondary">Уже есть аккаунт</a>
+            <button type="submit" class="btn btn-green">Создать аккаунт</button>
+            <a href="{% url 'login' %}" class="btn btn-gray">Есть аккаунт</a>
         </div>
     </form>
 </div>

@@ -1,10 +1,10 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="card">
-    <h2 style="color: #dc3545;">Удаление профиля</h2>
+<div class="box">
+    <h2 style="margin-top: 0; color: #9b2c2c;">Удаление профиля</h2>
 
-    <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+    <div class="msg msg-error" style="margin-bottom: 20px;">
         <p><strong>Внимание! Это действие нельзя отменить.</strong></p>
     </div>
 
@@ -19,8 +19,8 @@
     <form method="post">
         {% csrf_token %}
         <div>
-            <button type="submit" class="btn btn-danger">Да, удалить мой профиль</button>
-            <a href="{% url 'profile' %}" class="btn btn-secondary">Отмена</a>
+            <button type="submit" class="btn btn-red">Да, удалить мой профиль</button>
+            <a href="{% url 'profile' %}" class="btn btn-gray">Отмена</a>
         </div>
     </form>
 </div>
