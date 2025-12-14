@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
@@ -11,7 +10,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -31,7 +29,6 @@ class Post(models.Model):
     def comments_count(self):
         return self.comments.count()
 
-
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
@@ -42,7 +39,6 @@ class Like(models.Model):
 
     def __str__(self):
         return f'{self.user.username} likes post {self.post.id}'
-
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -57,13 +53,12 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment by {self.user.username}'
 
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
-
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    if hasattr(instance, 'profile'):
+        instance.profile.save()

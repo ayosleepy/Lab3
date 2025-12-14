@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 from .models import Post, Like, Comment, Profile
 from .forms import (
     UserRegisterForm, UserUpdateForm, ProfileUpdateForm,
@@ -126,6 +127,8 @@ def add_comment(request, post_id):
             comment.post = post
             comment.save()
             messages.success(request, 'Комментарий добавлен!')
+        else:
+            messages.error(request, 'Ошибка в комментарии.')
 
     return redirect('index')
 
@@ -162,6 +165,11 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            email = form.cleaned_data.get('email')
+            if User.objects.filter(email=email).exists():
+                form.add_error('email', 'Пользователь с таким email уже существует.')
+                return render(request, 'blog/register.html', {'form': form})
+
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Аккаунт {username} создан!')
