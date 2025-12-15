@@ -1,0 +1,281 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f0f2f5;
+}
+
+.header {
+    background: #1877f2;
+    padding: 12px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-name {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+}
+
+.menu a:hover {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+.user-name {
+    color: white;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: #e41e3f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.main {
+    padding: 25px 0;
+    min-height: 80vh;
+}
+
+.box {
+    background: white;
+    border-radius: 6px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.box h2 {
+    margin-top: 0;
+}
+
+.msg {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.msg-success {
+    background: #e7f3e7;
+    color: #2d662d;
+    border: 1px solid #c3e6cb;
+}
+
+.msg-error {
+    background: #fde8e8;
+    color: #9b2c2c;
+    border: 1px solid #f5c6cb;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #1877f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #166fe5;
+}
+
+.btn-red {
+    background: #e41e3f;
+}
+
+.btn-red:hover {
+    background: #c91c37;
+}
+
+.btn-gray {
+    background: #65676b;
+}
+
+.btn-gray:hover {
+    background: #5c5e62;
+}
+
+.btn-green {
+    background: #42b72a;
+}
+
+.btn-green:hover {
+    background: #36a420;
+}
+
+textarea, input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddfe2;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #dddfe2;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #65676b;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.small-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.post-content {
+    margin: 15px 0;
+}
+
+.post-stats {
+    margin-top: 12px;
+    display: flex;
+    gap: 15px;
+    color: #65676b;
+}
+
+.comments-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #dddfe2;
+}
+
+.comment-form textarea {
+    width: 100%;
+}
+
+.comment-item {
+    margin-top: 10px;
+    padding: 8px;
+    background: #f0f2f5;
+    border-radius: 4px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.warning-box {
+    background: #fde8e8;
+    border: 1px solid #f5c6cb;
+}
+
+.warning-box h3 {
+    color: #9b2c2c;
+    margin-top: 0;
+}
+
+.warning-text {
+    color: #9b2c2c;
+}
+
+.preview-box {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.user-posts {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dddfe2;
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-controls {
+    display: inline-block;
+}
+
+.pagination-info {
+    margin: 0 12px;
+}

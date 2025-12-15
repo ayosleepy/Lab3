@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0; color: #9b2c2c;">Удаление поста</h2>
+    <h2 class="warning-text">Удаление поста</h2>
 
-    <div class="msg msg-error" style="margin-bottom: 20px;">
+    <div class="msg msg-error">
         <p><strong>Вы уверены, что хотите удалить этот пост?</strong></p>
     </div>
 
-    <div style="padding: 15px; background: #f8f9fa; border-radius: 4px; margin-bottom: 20px;">
+    <div class="preview-box">
         <p>{{ post.content }}</p>
         <small class="small-text">Создан: {{ post.created_at|date:"d.m.Y H:i" }}</small>
     </div>
 
     <form method="post">
         {% csrf_token %}
-        <div>
+        <div class="form-actions">
             <button type="submit" class="btn btn-red">Да, удалить</button>
             <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>

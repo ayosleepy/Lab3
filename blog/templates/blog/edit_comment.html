@@ -2,18 +2,18 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0;">Редактирование комментария</h2>
+    <h2>Редактирование комментария</h2>
     <small class="small-text">Создан: {{ comment.created_at|date:"d.m.Y H:i" }}</small>
 
     <form method="post">
         {% csrf_token %}
 
-        <div>
-            <label>Текст комментария:</label>
+        <div class="form-group">
+            <label class="form-label">Текст комментария:</label>
             {{ form.content }}
         </div>
 
-        <div style="margin-top: 20px;">
+        <div class="form-actions">
             <button type="submit" class="btn btn-green">Сохранить изменения</button>
             <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>

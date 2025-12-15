@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0;">Создание поста</h2>
+    <h2>Создание поста</h2>
 
     <form method="post">
         {% csrf_token %}
 
-        <div>
-            <label>Содержание поста:</label>
+        <div class="form-group">
+            <label class="form-label">Содержание поста:</label>
             {{ form.content }}
             {% if form.content.errors %}
-            <div style="color: #e41e3f; font-size: 13px;">{{ form.content.errors }}</div>
+            <div class="warning-text">{{ form.content.errors }}</div>
             {% endif %}
         </div>
 
-        <div style="margin-top: 20px;">
+        <div class="form-actions">
             <button type="submit" class="btn btn-green">Опубликовать</button>
             <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>

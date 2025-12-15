@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 
+from django.template.context_processors import static
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'ваш-секретный-ключ-12345'
@@ -92,3 +94,4 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

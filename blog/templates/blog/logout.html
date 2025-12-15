@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0;">Выход</h2>
+    <h2>Выход</h2>
     <p>Вы вышли из системы.</p>
-    <div style="margin-top: 20px;">
+    <div class="form-actions">
         <a href="{% url 'login' %}" class="btn">Войти снова</a>
         <a href="{% url 'index' %}" class="btn btn-gray">На главную</a>
     </div>

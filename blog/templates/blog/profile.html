@@ -2,10 +2,10 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0;">Профиль: {{ user.username }}</h2>
+    <h2>Профиль: {{ user.username }}</h2>
 
     {% if user.profile.avatar %}
-    <div style="text-align: center; margin-bottom: 20px;">
+    <div class="avatar-container">
         <img src="{{ user.profile.avatar.url }}" class="avatar" alt="Аватар">
     </div>
     {% endif %}
@@ -13,31 +13,31 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <div style="margin-bottom: 20px;">
+        <div class="form-group">
             <h3>Основные данные</h3>
-            <div>
-                <label>Имя пользователя:</label>
+            <div class="form-group">
+                <label class="form-label">Имя пользователя:</label>
                 {{ user_form.username }}
             </div>
-            <div>
-                <label>Email:</label>
+            <div class="form-group">
+                <label class="form-label">Email:</label>
                 {{ user_form.email }}
             </div>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div class="form-group">
             <h3>Дополнительная информация</h3>
-            <div>
-                <label>Аватар:</label>
+            <div class="form-group">
+                <label class="form-label">Аватар:</label>
                 {{ profile_form.avatar }}
             </div>
-            <div>
-                <label>О себе:</label>
+            <div class="form-group">
+                <label class="form-label">О себе:</label>
                 {{ profile_form.bio }}
             </div>
         </div>
 
-        <div style="margin-top: 20px;">
+        <div class="form-actions">
             <button type="submit" class="btn btn-green">Сохранить</button>
             <a href="{% url 'index' %}" class="btn btn-gray">Отмена</a>
         </div>
@@ -49,18 +49,18 @@
 
     {% if posts %}
         {% for post in posts %}
-        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #dddfe2;">
-            <div style="display: flex; justify-content: space-between;">
+        <div class="user-posts">
+            <div class="post-info">
                 <span class="small-text">{{ post.created_at|date:"d.m.Y H:i" }}</span>
                 <div>
-                    <a href="{% url 'edit_post' post.id %}" class="small-text" style="margin-right: 10px;">Изм</a>
-                    <a href="{% url 'delete_post' post.id %}" class="small-text" style="color: #e41e3f;">Удл</a>
+                    <a href="{% url 'edit_post' post.id %}" class="small-text">Изм</a>
+                    <a href="{% url 'delete_post' post.id %}" class="warning-text">Удл</a>
                 </div>
             </div>
             <p>{{ post.content|truncatechars:120 }}</p>
             <div class="small-text">
                 <span>Лайки: {{ post.likes_count }}</span>
-                <span style="margin-left: 15px;">Комментарии: {{ post.comments_count }}</span>
+                <span>Комментарии: {{ post.comments_count }}</span>
             </div>
         </div>
         {% endfor %}
@@ -69,12 +69,12 @@
     {% endif %}
 
     {% if posts.has_other_pages %}
-    <div style="text-align: center; margin-top: 20px;">
+    <div class="pagination">
         {% if posts.has_previous %}
         <a href="?page={{ posts.previous_page_number }}" class="btn btn-gray">Назад</a>
         {% endif %}
 
-        <span style="margin: 0 12px;">{{ posts.number }} / {{ posts.paginator.num_pages }}</span>
+        <span class="pagination-info">{{ posts.number }} / {{ posts.paginator.num_pages }}</span>
 
         {% if posts.has_next %}
         <a href="?page={{ posts.next_page_number }}" class="btn btn-gray">Вперед</a>
@@ -83,9 +83,9 @@
     {% endif %}
 </div>
 
-<div class="box" style="background: #fde8e8; border: 1px solid #f5c6cb;">
-    <h3 style="color: #9b2c2c; margin-top: 0;">Удаление профиля</h3>
-    <p style="color: #9b2c2c;">Внимание: действие необратимо.</p>
+<div class="box warning-box">
+    <h3>Удаление профиля</h3>
+    <p class="warning-text">Внимание: действие необратимо.</p>
     <a href="{% url 'delete_profile' %}" class="btn btn-red">Удалить профиль</a>
 </div>
 {% endblock %}

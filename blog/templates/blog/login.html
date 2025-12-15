@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="box">
-    <h2 style="margin-top: 0;">Вход</h2>
+    <h2>Вход</h2>
 
     {% if form.errors %}
     <div class="msg msg-error">
@@ -13,17 +13,17 @@
     <form method="post">
         {% csrf_token %}
 
-        <div>
-            <label>Имя пользователя:</label>
-            <input type="text" name="username" required style="width: 100%;">
+        <div class="form-group">
+            <label class="form-label">Имя пользователя:</label>
+            <input type="text" name="username" required>
         </div>
 
-        <div>
-            <label>Пароль:</label>
-            <input type="password" name="password" required style="width: 100%;">
+        <div class="form-group">
+            <label class="form-label">Пароль:</label>
+            <input type="password" name="password" required>
         </div>
 
-        <div style="margin-top: 20px;">
+        <div class="form-actions">
             <button type="submit" class="btn">Войти</button>
             <a href="{% url 'register' %}" class="btn btn-gray">Регистрация</a>
         </div>
